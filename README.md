@@ -1,5 +1,7 @@
 # Чат для MAX на GREEN-API
 
+[![CI](https://github.com/airmalik0/green-api-max-chat/actions/workflows/ci.yml/badge.svg)](https://github.com/airmalik0/green-api-max-chat/actions/workflows/ci.yml)
+
 Тестовое задание на позицию «Фронтенд-разработчик React» в GREEN-API: минимальный веб-чат для
 отправки и получения текстовых сообщений в мессенджере [MAX](https://green-api.com/max) через
 [HTTP API GREEN-API](https://green-api.com/v3/docs/). Внешний вид повторяет [web.max.ru](https://web.max.ru/).
