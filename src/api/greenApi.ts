@@ -54,7 +54,12 @@ export function createGreenApiClient(credentials: Credentials, fetchImpl: typeof
   async function request<T>(
     method: 'GET' | 'POST' | 'DELETE',
     apiMethod: string,
-    options: { body?: unknown; suffix?: string; signal?: AbortSignal } = {},
+    options: {
+      body?: unknown;
+      suffix?: string;
+      signal?: AbortSignal;
+      emptyOnTimeout?: boolean;
+    } = {},
   ): Promise<T | null> {
     const url = `${base}/${apiMethod}/${token}${options.suffix ?? ''}`;
     let response: Response;
@@ -71,6 +76,7 @@ export function createGreenApiClient(credentials: Credentials, fetchImpl: typeof
     }
 
     const text = await response.text();
+    if (response.status === 408 && options.emptyOnTimeout) return null;
     if (!response.ok) {
       throw new GreenApiError(response.status, describeHttpError(response.status, text));
     }
@@ -99,11 +105,15 @@ export function createGreenApiClient(credentials: Credentials, fetchImpl: typeof
         body: { phoneNumber: Number(phoneNumber) },
       }),
 
-    /** Long polling: сервер держит запрос до `timeoutSec` секунд и отдаёт null, если очередь пуста. */
+    /**
+     * Long polling: сервер держит запрос до `timeoutSec` секунд. Пустая очередь — это `null`
+     * либо 408 (инстансы MAX отвечают 408 по истечении таймаута) — оба случая значат «ждём дальше».
+     */
     receiveNotification: (timeoutSec: number, signal?: AbortSignal) =>
       request<ReceivedNotification>('GET', 'receiveNotification', {
         suffix: `?receiveTimeout=${timeoutSec}`,
         signal,
+        emptyOnTimeout: true,
       }),
 
     deleteNotification: (receiptId: number, signal?: AbortSignal) =>

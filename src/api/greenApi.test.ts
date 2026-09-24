@@ -52,6 +52,16 @@ describe('createGreenApiClient', () => {
     );
   });
 
+  it('receiveNotification считает 408 по таймауту пустой очередью, а не ошибкой', async () => {
+    const client = createGreenApiClient(credentials, mockFetch(408, ''));
+    await expect(client.receiveNotification(20)).resolves.toBeNull();
+  });
+
+  it('408 в других методах остаётся ошибкой', async () => {
+    const client = createGreenApiClient(credentials, mockFetch(408, ''));
+    await expect(client.getStateInstance()).rejects.toMatchObject({ status: 408 });
+  });
+
   it('deleteNotification шлёт DELETE с receiptId в пути', async () => {
     const fetchMock = mockFetch(200, '{"result":true}');
     await createGreenApiClient(credentials, fetchMock).deleteNotification(42);
