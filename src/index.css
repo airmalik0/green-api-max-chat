@@ -1,0 +1,75 @@
+/* Палитра взята со светлой темы web.max.ru */
+:root {
+  --surface: #edeef2;
+  --panel: #ffffff;
+  --panel-secondary: #f5f7fa;
+  --accent: #007aff;
+  --accent-hover: #479fff;
+  --accent-pressed: #006be0;
+  --accent-fade: rgba(0, 122, 255, 0.12);
+  --text: #060708;
+  --text-secondary: rgba(6, 7, 8, 0.52);
+  --text-link: #0784b8;
+  --stroke: rgba(0, 0, 0, 0.08);
+  --danger: #ce4257;
+  --bubble-in: #ffffff;
+  --bubble-out: #e9fdff;
+  --bubble-out-text: #011c29;
+  --chat-bg-from: #99d5d7;
+  --chat-bg-to: #80bcff;
+  --radius-bubble: 18px;
+  --radius-field: 12px;
+
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: 0.15px;
+  color: var(--text);
+  background: var(--surface);
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

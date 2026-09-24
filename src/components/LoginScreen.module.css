@@ -1,0 +1,109 @@
+.page {
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: linear-gradient(135deg, var(--chat-bg-from), var(--chat-bg-to));
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  padding: 32px 28px 28px;
+  border-radius: 28px;
+  background: linear-gradient(180deg, #e4f0ff 0%, #ffffff 45%);
+  box-shadow: 0 12px 40px rgba(0, 60, 140, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.logo {
+  align-self: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: linear-gradient(135deg, #00b8ff, #007aff 55%, #b210db);
+}
+
+.title {
+  margin: 4px 0 0;
+  text-align: center;
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.subtitle {
+  margin: -6px 0 6px;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.subtitle a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.field input {
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-field);
+  background: var(--panel-secondary);
+  font-size: 15px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.field input:focus {
+  border-color: var(--accent);
+  background: #fff;
+}
+
+.error {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: var(--radius-field);
+  background: #ffeff0;
+  color: var(--danger);
+  font-size: 14px;
+}
+
+.submit {
+  height: 44px;
+  margin-top: 4px;
+  border: none;
+  border-radius: var(--radius-field);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.submit:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.submit:active:not(:disabled) {
+  background: var(--accent-pressed);
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}

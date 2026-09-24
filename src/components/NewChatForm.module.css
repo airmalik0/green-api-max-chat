@@ -1,0 +1,55 @@
+.form {
+  padding: 8px 16px 12px;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+.input {
+  min-width: 0;
+  flex: 1;
+  height: 40px;
+  padding: 0 14px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-field);
+  background: var(--panel-secondary);
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--accent);
+  background: #fff;
+}
+
+.input[aria-invalid='true'] {
+  border-color: var(--danger);
+}
+
+.button {
+  flex: none;
+  height: 40px;
+  padding: 0 14px;
+  border: none;
+  border-radius: var(--radius-field);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 500;
+}
+
+.button:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.error {
+  margin: 6px 2px 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--danger);
+}
